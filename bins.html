@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bins — Nova Dustbin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="logo">NOVA</div>
+          <div class="subtitle">Dustbin</div>
+        </div>
+        <nav class="menu">
+          <button class="menu-item" data-page="dashboard">Dashboard</button>
+          <button class="menu-item active" data-page="bins">Bins</button>
+          <button class="menu-item" data-page="alerts">Alerts</button>
+          <button class="menu-item" data-page="reports">Reports</button>
+          <button class="menu-item" data-page="settings">Settings</button>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <button id="logout">Logout</button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="search"><input id="search" placeholder="Search bins, alerts..." /></div>
+        <div class="top-actions">
+          <button id="themeToggle" title="Toggle theme">🌙</button>
+          <button id="logoutTop" title="Logout">🚪</button>
+          <div class="user">N</div>
+        </div>
+      </header>
+
+      <div class="content">
+        <article class="page" id="binsPage">
+          <h1>Bins</h1>
+
+          <!-- Zone Management -->
+          <div class="card">
+            <h3>Zone Management</h3>
+            <div class="form-row" style="margin-bottom:12px">
+              <input id="newZoneName" placeholder="Enter new zone name" style="flex:1" />
+              <button id="addZone" class="btn-primary">Add Zone</button>
+            </div>
+            <div class="zone-list" id="zoneList" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+              <!-- Zones will be populated here -->
+            </div>
+          </div>
+
+          <!-- Bins Management -->
+          <div class="card">
+            <h3>Bins Management</h3>
+            <div class="form-row" style="margin-bottom:12px">
+              <label for="filterZone" style="display:none">Filter by Zone</label>
+              <select id="filterZone" title="Filter by Zone">
+                <option value="">All Zones</option>
+              </select>
+              <input id="binSearch" placeholder="Search bin by id or location" />
+              <button id="addBin" class="btn-primary">Add Bin</button>
+            </div>
+            <table class="table" id="binsTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Location</th>
+                  <th>Fill %</th>
+                  <th>Status</th>
+                  <th>Last Update</th>
+                  <th>Predicted Full</th>
+                  <th>Anomaly</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="binsTbody"></tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+
+      <footer class="footer">© 2025 Nova Dustbin</footer>
+    </div>
+  </div>
+  <script src="common.js"></script>
+</body>
+
+</html>

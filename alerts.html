@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Alerts — Nova Dustbin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="logo">NOVA</div>
+          <div class="subtitle">Dustbin</div>
+        </div>
+        <nav class="menu">
+          <button class="menu-item" data-page="dashboard">Dashboard</button>
+          <button class="menu-item" data-page="bins">Bins</button>
+          <button class="menu-item active" data-page="alerts">Alerts</button>
+          <button class="menu-item" data-page="reports">Reports</button>
+          <button class="menu-item" data-page="settings">Settings</button>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <button id="logout">Logout</button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="search"><input id="search" placeholder="Search bins, alerts..." /></div>
+        <div class="top-actions">
+          <button id="themeToggle" title="Toggle theme">🌙</button>
+          <button id="logoutTop" title="Logout">🚪</button>
+          <div class="user">N</div>
+        </div>
+      </header>
+
+      <div class="content">
+        <article class="page" id="alertsPage">
+          <h1>Alerts</h1>
+
+          <!-- Alert Filters and Controls -->
+          <div class="card">
+            <div class="form-row" style="margin-bottom:12px">
+              <label for="alertFilter" style="display:none">Filter Alerts</label>
+              <select id="alertFilter" title="Filter Alerts">
+                <option value="all">All Alerts</option>
+                <option value="critical">Critical Only</option>
+                <option value="high">High Priority</option>
+                <option value="normal">Normal Priority</option>
+              </select>
+              <input id="alertSearch" placeholder="Search alerts by bin ID or location" />
+              <button id="refreshAlerts" class="btn-secondary">🔄 Refresh</button>
+              <button id="clearAllAlerts" class="btn-danger">Clear All</button>
+            </div>
+            <div class="alert-stats" style="display:flex;gap:16px;margin-bottom:16px">
+              <div class="stat">
+                <div class="num" id="criticalCount">0</div>
+                <div class="label">Critical</div>
+              </div>
+              <div class="stat">
+                <div class="num" id="highCount">0</div>
+                <div class="label">High</div>
+              </div>
+              <div class="stat">
+                <div class="num" id="normalCount">0</div>
+                <div class="label">Normal</div>
+              </div>
+              <div class="stat">
+                <div class="num" id="totalAlerts">0</div>
+                <div class="label">Total</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alerts List -->
+          <div class="card">
+            <div id="alertsContainer">
+              <div class="alert-placeholder" style="text-align:center;padding:40px;color:var(--muted)">
+                <div style="font-size:48px;margin-bottom:16px">🔔</div>
+                <div>No alerts at this time</div>
+                <div style="font-size:14px;margin-top:8px">All bins are within normal operating levels</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <footer class="footer">© 2025 Nova Dustbin</footer>
+    </div>
+  </div>
+  <script src="common.js"></script>
+</body>
+
+</html>

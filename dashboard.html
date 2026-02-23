@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard — Nova Dustbin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="logo">NOVA</div>
+          <div class="subtitle">Dustbin</div>
+        </div>
+        <nav class="menu">
+          <button class="menu-item active" data-page="dashboard">Dashboard</button>
+          <button class="menu-item" data-page="bins">Bins</button>
+          <button class="menu-item" data-page="alerts">Alerts</button>
+          <button class="menu-item" data-page="reports">Reports</button>
+          <button class="menu-item" data-page="settings">Settings</button>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <button id="logout">Logout</button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <button id="sidebarToggle" title="Toggle sidebar">☰</button>
+        <div class="search"><input id="search" placeholder="Search bins, alerts..." /></div>
+        <div class="top-actions">
+          <button id="themeToggle" title="Toggle theme">🌙</button>
+          <button id="logoutTop" title="Logout">Logout</button>
+          <div class="user">N</div>
+        </div>
+      </header>
+
+      <div class="content">
+        <article class="page" id="dashboardPage">
+          <h1>Welcome to Nova Dustbin Dashboard</h1>
+          <p class="dashboard-subtitle">Monitor your smart waste management system in real-time</p>
+          <div class="grid">
+            <div class="card stats-card">
+              <div class="stats-row">
+                <div class="stat">
+                  <div class="stat-icon">🗂️</div>
+                  <div class="num">128</div>
+                  <div class="label">Total Bins</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-icon">🚨</div>
+                  <div class="num">24</div>
+                  <div class="label">Active Alerts</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-icon">⚠️</div>
+                  <div class="num">3</div>
+                  <div class="label">Critical</div>
+                </div>
+              </div>
+              <div class="card chart-card" style="margin-top:12px">
+                <h3>Fill Level Overview</h3><canvas id="fillChart" width="400" height="180"></canvas>
+              </div>
+            </div>
+
+            <div>
+              <div class="card recent activity-card">
+                <h3>Recent Activity</h3>
+                <ul id="activityList"></ul>
+              </div>
+              <div class="card prediction-card" style="margin-top:12px">
+                <h3>AI Predictions</h3>
+                <div id="predictionSummary">
+                  <p>Loading predictions...</p>
+                </div>
+              </div>
+              <div class="card mapcard" style="margin-top:12px">
+                <h3>Bin Locations</h3>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153167!3d-37.816279742021665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d4a32ddf9b!2sMelbourne%20CBD%2C%20Victoria%2C%20Australia!5e0!3m2!1sen!2sus!4v1610000000000!5m2!1sen!2sus"
+                  width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <footer class="footer">© 2025 Nova Dustbin</footer>
+    </div>
+  </div>
+  <script src="common.js"></script>
+</body>
+
+</html>

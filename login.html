@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login — Nova Dustbin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="logo">NOVA</div>
+          <div class="subtitle">Dustbin</div>
+        </div>
+        <nav class="menu">
+          <button class="menu-item" data-page="dashboard">Dashboard</button>
+          <button class="menu-item" data-page="bins">Bins</button>
+          <button class="menu-item" data-page="alerts">Alerts</button>
+          <button class="menu-item" data-page="reports">Reports</button>
+          <button class="menu-item" data-page="settings">Settings</button>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <button id="logout" disabled>Logout</button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <button id="sidebarToggle" title="Toggle sidebar">☰</button>
+        <div class="search"><input id="search" placeholder="Search bins, alerts..." disabled></div>
+        <div class="top-actions">
+          <button id="themeToggle" title="Toggle theme">🌙</button>
+          <button id="logoutTop" title="Logout" disabled>Login</button>
+          <div class="user" style="visibility: hidden;">N</div>
+        </div>
+      </header>
+
+      <div class="content">
+        <article class="page" id="loginPage"
+          style="display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 140px);">
+          <div class="login-card">
+            <div class="login-header">
+              <div class="logo">NOVA</div>
+              <h2>Welcome Back</h2>
+              <p>Sign in to your account</p>
+            </div>
+            <form class="login-form">
+              <div class="input-group">
+                <label for="loginEmail">Email Address</label>
+                <input id="loginEmail" type="email" placeholder="Enter your email" required>
+              </div>
+              <div class="input-group">
+                <label for="loginPass">Password</label>
+                <input id="loginPass" type="password" placeholder="Enter your password" required>
+              </div>
+              <div class="form-options">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="rememberMe"> Remember me
+                </label>
+                <a href="#" class="forgot-link">Forgot password?</a>
+              </div>
+              <button type="button" id="doLogin" class="btn-primary">Sign In</button>
+            </form>
+            <div class="login-footer">
+              <p>Don't have an account? <a href="signup.html" class="signup-link">Sign up</a></p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <footer class="footer">© 2025 Nova Dustbin</footer>
+    </div>
+  </div>
+  <script src="common.js"></script>
+</body>
+
+</html>

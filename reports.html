@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reports — Nova Dustbin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="logo">NOVA</div>
+          <div class="subtitle">Dustbin</div>
+        </div>
+        <nav class="menu">
+          <button class="menu-item" data-page="dashboard">Dashboard</button>
+          <button class="menu-item" data-page="bins">Bins</button>
+          <button class="menu-item" data-page="alerts">Alerts</button>
+          <button class="menu-item active" data-page="reports">Reports</button>
+          <button class="menu-item" data-page="settings">Settings</button>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <button id="logout">Logout</button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="search"><input id="search" placeholder="Search bins, alerts..." /></div>
+        <div class="top-actions">
+          <button id="themeToggle" title="Toggle theme">🌙</button>
+          <button id="logoutTop" title="Logout">🚪</button>
+          <div class="user">N</div>
+        </div>
+      </header>
+
+      <div class="content">
+        <article class="page" id="reportsPage">
+          <h1>Reports</h1>
+
+          <!-- Report Generation Controls -->
+          <div class="card">
+            <h3 style="margin-bottom:16px">Generate Reports</h3>
+            <div class="form-row" style="margin-bottom:12px">
+              <div class="form-group" style="margin:0">
+                <label for="reportType">Report Type</label>
+                <select id="reportType">
+                  <option value="bins">Bins Status Report</option>
+                  <option value="alerts">Alerts History Report</option>
+                  <option value="activity">Activity Log Report</option>
+                  <option value="zones">Zones Summary Report</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin:0">
+                <label for="fromDate">From Date</label>
+                <input type="date" id="fromDate">
+              </div>
+              <div class="form-group" style="margin:0">
+                <label for="toDate">To Date</label>
+                <input type="date" id="toDate">
+              </div>
+            </div>
+            <div class="form-row" style="margin-bottom:12px">
+              <div class="form-group" style="margin:0">
+                <label for="reportFormat">Format</label>
+                <select id="reportFormat">
+                  <option value="csv">CSV</option>
+                  <option value="json">JSON</option>
+                  <option value="pdf">PDF (Preview)</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin:0">
+                <label for="zoneFilter">Zone Filter</label>
+                <select id="zoneFilter">
+                  <option value="all">All Zones</option>
+                </select>
+              </div>
+            </div>
+            <div class="action-buttons">
+              <button id="generateReport" class="btn-primary">Generate Report</button>
+              <button id="downloadCsv" class="btn-secondary">Download CSV</button>
+              <button id="emailReport" class="btn-secondary">Email Report</button>
+            </div>
+          </div>
+
+          <!-- Report Preview -->
+          <div class="card">
+            <h3 style="margin-bottom:16px">Report Preview</h3>
+            <div id="reportPreview">
+              <div class="report-placeholder" style="text-align:center;padding:40px;color:var(--muted)">
+                <div style="font-size:48px;margin-bottom:16px">📊</div>
+                <div>Select report parameters and click "Generate Report" to preview</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="grid">
+            <div class="card">
+              <h3>Quick Statistics</h3>
+              <div class="stats-row">
+                <div class="stat">
+                  <div class="num" id="totalBins">20</div>
+                  <div class="label">Total Bins</div>
+                </div>
+                <div class="stat">
+                  <div class="num" id="activeAlerts">0</div>
+                  <div class="label">Active Alerts</div>
+                </div>
+                <div class="stat">
+                  <div class="num" id="totalZones">4</div>
+                  <div class="label">Zones</div>
+                </div>
+                <div class="stat">
+                  <div class="num" id="avgFillRate">0%</div>
+                  <div class="label">Avg Fill Rate</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Fill Level Distribution</h3>
+              <canvas id="fillChart" width="400" height="200" style="max-width:100%;height:auto"></canvas>
+            </div>
+          </div>
+
+          <!-- Scheduled Reports -->
+          <div class="card">
+            <h3 style="margin-bottom:16px">Scheduled Reports</h3>
+            <div class="form-row" style="margin-bottom:12px">
+              <div class="form-group" style="margin:0">
+                <label for="scheduleType">Report Type</label>
+                <select id="scheduleType">
+                  <option value="daily">Daily Summary</option>
+                  <option value="weekly">Weekly Report</option>
+                  <option value="monthly">Monthly Analysis</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin:0">
+                <label for="scheduleTime">Time</label>
+                <input type="time" id="scheduleTime" value="09:00">
+              </div>
+              <div class="form-group" style="margin:0">
+                <label for="scheduleEmail">Email</label>
+                <input type="email" id="scheduleEmail" placeholder="admin@example.com">
+              </div>
+            </div>
+            <div class="action-buttons">
+              <button id="scheduleReport" class="btn-primary">Schedule Report</button>
+              <button id="viewScheduled" class="btn-secondary">View Scheduled</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <footer class="footer">© 2025 Nova Dustbin</footer>
+    </div>
+  </div>
+  <script src="common.js"></script>
+</body>
+
+</html>

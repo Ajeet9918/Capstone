@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Nova — Create Account</title>
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --bg:#eef2ff;
+  --danger:#ef4444;
+  --success:#22c55e;
+}
+
+*{
+  box-sizing:border-box;
+  font-family:Segoe UI,system-ui,sans-serif;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+}
+
+.card{
+  width:380px;
+  background:white;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
+  animation:fade .5s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:none}
+}
+
+.brand{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.brand h1{
+  margin:0;
+  color:var(--primary);
+}
+
+.field{
+  position:relative;
+  margin-top:18px;
+}
+
+input{
+  width:100%;
+  padding:14px 12px;
+  border-radius:8px;
+  border:1px solid #d1d5db;
+  font-size:14px;
+  outline:none;
+}
+
+input:focus{
+  border-color:var(--primary);
+}
+
+label{
+  position:absolute;
+  top:50%;
+  left:12px;
+  transform:translateY(-50%);
+  font-size:14px;
+  color:#6b7280;
+  background:white;
+  padding:0 4px;
+  transition:.2s;
+  pointer-events:none;
+}
+
+input:focus+label,
+input:not(:placeholder-shown)+label{
+  top:-6px;
+  font-size:12px;
+  color:var(--primary);
+}
+
+.toggle{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  font-size:13px;
+  color:#6b7280;
+}
+
+.strength{
+  height:6px;
+  border-radius:5px;
+  margin-top:6px;
+  background:#e5e7eb;
+  overflow:hidden;
+}
+
+.strength div{
+  height:100%;
+  width:0%;
+  transition:.3s;
+}
+
+.error{
+  font-size:12px;
+  color:var(--danger);
+  margin-top:4px;
+}
+
+.checkbox{
+  margin-top:14px;
+  font-size:14px;
+}
+
+button{
+  width:100%;
+  margin-top:18px;
+  padding:13px;
+  border:none;
+  border-radius:8px;
+  background:var(--primary);
+  color:white;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+.loading{
+  opacity:.6;
+  pointer-events:none;
+}
+
+.footer{
+  margin-top:16px;
+  text-align:center;
+  font-size:14px;
+}
+.footer a{
+  color:var(--primary);
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="brand">
+<h1>Nova</h1>
+<p>Create your account</p>
+</div>
+
+<div class="field">
+<input id="name" placeholder=" " required>
+<label>Name</label>
+</div>
+
+<div class="field">
+<input id="email" type="email" placeholder=" ">
+<label>Email</label>
+<div id="emailErr" class="error"></div>
+</div>
+
+<div class="field">
+<input id="pass" type="password" placeholder=" ">
+<label>Password</label>
+<span class="toggle" onclick="togglePass()">Show</span>
+<div class="strength"><div id="bar"></div></div>
+</div>
+
+<div class="checkbox">
+<input type="checkbox" id="terms">
+<label for="terms"> I agree to Terms & Privacy</label>
+</div>
+
+<button id="signupBtn" onclick="signup()">Create Account</button>
+
+<div class="footer">
+Already have an account? <a href="login.html">Sign in</a>
+</div>
+
+</div>
+
+<script>
+const pass = document.getElementById("pass");
+const bar = document.getElementById("bar");
+
+pass.addEventListener("input", ()=>{
+  const v = pass.value;
+  let score = 0;
+  if(v.length>6) score++;
+  if(/[A-Z]/.test(v)) score++;
+  if(/[0-9]/.test(v)) score++;
+  if(/[^A-Za-z0-9]/.test(v)) score++;
+
+  const colors=["#ef4444","#f59e0b","#eab308","#22c55e"];
+  bar.style.width=(score*25)+"%";
+  bar.style.background=colors[score-1]||"transparent";
+});
+
+function togglePass(){
+  pass.type = pass.type==="password"?"text":"password";
+}
+
+function signup(){
+  const btn=document.getElementById("signupBtn");
+  const email=document.getElementById("email").value;
+  const terms=document.getElementById("terms").checked;
+
+  document.getElementById("emailErr").textContent="";
+
+  if(!email.includes("@")){
+    document.getElementById("emailErr").textContent="Enter valid email";
+    return;
+  }
+
+  if(!terms){
+    alert("Please accept terms");
+    return;
+  }
+
+  btn.classList.add("loading");
+  btn.textContent="Creating account...";
+
+  setTimeout(()=>{
+    btn.textContent="✓ Account Created!";
+    btn.style.background="var(--success)";
+  },1500);
+}
+</script>
+
+</body>
+</html>

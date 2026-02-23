@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Settings — Nova Dustbin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="logo">NOVA</div>
+          <div class="subtitle">Dustbin</div>
+        </div>
+        <nav class="menu">
+          <button class="menu-item" data-page="dashboard">Dashboard</button>
+          <button class="menu-item" data-page="bins">Bins</button>
+          <button class="menu-item" data-page="alerts">Alerts</button>
+          <button class="menu-item" data-page="reports">Reports</button>
+          <button class="menu-item active" data-page="settings">Settings</button>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <button id="logout">Logout</button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="search"><input id="search" placeholder="Search bins, alerts..." /></div>
+        <div class="top-actions">
+          <button id="themeToggle" title="Toggle theme">🌙</button>
+          <button id="logoutTop" title="Logout">🚪</button>
+          <div class="user">N</div>
+        </div>
+      </header>
+
+      <div class="content">
+        <article class="page" id="settingsPage">
+          <h1>Settings</h1>
+
+          <!-- Profile Settings -->
+          <div class="card">
+            <h3>Profile Settings</h3>
+            <div class="form-group">
+              <label for="adminName">Admin Name</label>
+              <input id="adminName" type="text" value="Ajeet Kumar" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+              <label for="adminEmail">Email</label>
+              <input id="adminEmail" type="email" value="you@example.com" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+              <label for="adminPhone">Phone Number</label>
+              <input id="adminPhone" type="tel" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+              <label for="adminRole">Role</label>
+              <select id="adminRole">
+                <option value="admin">Administrator</option>
+                <option value="manager">Manager</option>
+                <option value="operator">Operator</option>
+              </select>
+            </div>
+            <button id="saveProfile" class="btn-primary">Save Profile</button>
+          </div>
+
+          <!-- Notification Settings -->
+          <div class="card">
+            <h3>Notification Settings</h3>
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="emailAlerts" checked>
+                <span class="checkmark"></span>
+                Email alerts for critical bin levels
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="smsAlerts">
+                <span class="checkmark"></span>
+                SMS alerts for critical bin levels
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="pushAlerts" checked>
+                <span class="checkmark"></span>
+                Push notifications
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="alertThreshold">Alert Threshold (%)</label>
+              <input id="alertThreshold" type="number" value="85" min="50" max="95">
+            </div>
+            <button id="saveNotifications" class="btn-primary">Save Notifications</button>
+          </div>
+
+          <!-- System Settings -->
+          <div class="card">
+            <h3>System Settings</h3>
+            <div class="form-group">
+              <label for="refreshInterval">Data Refresh Interval (minutes)</label>
+              <select id="refreshInterval">
+                <option value="5">5 minutes</option>
+                <option value="10" selected>10 minutes</option>
+                <option value="15">15 minutes</option>
+                <option value="30">30 minutes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="timezone">Timezone</label>
+              <select id="timezone">
+                <option value="UTC">UTC</option>
+                <option value="EST">Eastern Time</option>
+                <option value="PST" selected>Pacific Time</option>
+                <option value="GMT">GMT</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="autoBackup" checked>
+                <span class="checkmark"></span>
+                Automatic data backup
+              </label>
+            </div>
+            <button id="saveSystem" class="btn-primary">Save System Settings</button>
+          </div>
+
+          <!-- Account Actions -->
+          <div class="card">
+            <h3>Account Actions</h3>
+            <div class="action-buttons">
+              <button id="changePassword" class="btn-secondary">Change Password</button>
+              <button id="exportData" class="btn-secondary">Export Data</button>
+              <button id="deleteAccount" class="btn-danger">Delete Account</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <footer class="footer">© 2025 Nova Dustbin</footer>
+    </div>
+  </div>
+  <script src="common.js"></script>
+</body>
+
+</html>
